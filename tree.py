@@ -61,10 +61,16 @@ class Node:
 		print("%d"%self.data, end=", ")
 		if self.right:
 			self.right.print_inorder()
+
+
+def get_height( root ):
+	if root is None:
+		return 0
+	return 1+ max( get_height(root.left), get_height( root.right) )
 		
 
 root=Node(25)
-for i in 15,50,10,22,35,70,4,12,18,24,31,44,66,90:
+for i in 15,50,10,22,35,70,4,12,18,24,31,44,66,90,91,92:
 	root.insert(i)
 
 root.print_tree()
@@ -77,3 +83,5 @@ root.print_preorder()
 print("\n---  Postorder ---\n")
 root.print_postorder()
 print("\n------------------\n")
+
+print("Tree height is %s\n"%get_height( root) )
