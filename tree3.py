@@ -136,5 +136,6 @@ print("\n")
 bst.postorder()
 print("\n")
 
-print(bst.find(5))
-print(bst.find(25))
+print("{:>7} {}".format(  str(bst.find(25) ), bst.find(5) ) )
+print("{0}".format(  bst.find(25) ) )
+print("%s"%bst.find(25) )
