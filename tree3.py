@@ -69,6 +69,23 @@ class BST:
 				self._postorder( root.right )
 			print("%d"%root.data, end=", ")
 
+	def find(self, x):
+		if not self.root:
+			return False
+		else:
+			return self._find( x, self.root )
+
+	def _find(self, x, root):
+		
+		if not root:
+			return False
+		elif x == root.data:
+			return True
+		elif x < root.data:
+			return self._find(x , root.left)
+		else:
+			return self._find(x, root.right)
+
 def inorder(root):
 	if root.left :
 		inorder(root.left)
@@ -118,3 +135,6 @@ bst.preorder()
 print("\n")
 bst.postorder()
 print("\n")
+
+print(bst.find(5))
+print(bst.find(25))
