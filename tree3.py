@@ -17,6 +17,7 @@ class BST:
 		else:
 			self._insert(x, self.root)
 
+	""" insert helper """
 	def _insert( self, x, root):
 		if x < root.data:
 			"""If root.left doesnt have anything is true """
@@ -31,6 +32,42 @@ class BST:
 				print("right: %d"%x)
 			else:
 				self._insert(x, root.right)
+
+	def inorder(self):
+		self._inorder(self.root)
+
+	""" inorder helper """
+	def _inorder(self, root):
+		if root:
+			if root.left:
+				self._inorder( root.left)
+			print("%d"%root.data, end=", ")
+			if root.right:
+				self._inorder( root.right)
+
+	def preorder(self):
+		self._preorder( self.root)
+
+	""" preorder helper """
+	def _preorder( self, root):
+		if root:
+			print("%d"%root.data, end=", ")
+			if root.left:
+				self._preorder( root.left)
+			if root.right:
+				self._preorder( root.right)
+
+	""" postorder helper """
+	def postorder(self):
+		self._postorder( self.root)
+
+	def _postorder(self, root):
+		if root:
+			if root.left:
+				self._postorder( root.left )
+			if root.right:
+				self._postorder( root.right )
+			print("%d"%root.data, end=", ")
 
 def inorder(root):
 	if root.left :
@@ -55,6 +92,11 @@ def postorder(root):
 		postorder(root.right)
 	print("%d"%root.data, end=", ")
 
+def get_height(root):
+	if not root:
+		return 0
+	else:
+		return 1+max( get_height( root.left), get_height(root.right))
 
 bst = BST()
 for i in 25,15,50,10,22,35,70,4,12,18,24,31,44,66,90,91,92:
@@ -66,4 +108,13 @@ print("\n")
 preorder(bst.root)
 print("\n")
 postorder(bst.root)
+print("\n")
+print("Tree height is %d"%get_height(bst.root) )
+print("\n")
+
+bst.inorder()
+print("\n")
+bst.preorder()
+print("\n")
+bst.postorder()
 print("\n")
