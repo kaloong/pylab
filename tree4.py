@@ -1,28 +1,27 @@
 #! /usr/bin/python3
+# pylint: disable=too-few-public-methods, missing-docstring, mixed-indentation, trailing-whitespace
 
-class Node:
+class Node(object):  
 	def __init__(self, data, left=None, right=None):
 		self.data = data
 		self.left = left
 		self.right = right
 
-class BST:
+class BST(object):
 	def __init__(self):
 		self.root = None
 		self._order_result = []
 
-	def insert(self, x):
-		''' If self.root has something is not True'''
+	def insert(self, val):
+		#''' If self.root has something is not True'''
 		if not self.root:
-			self.root = Node(x)
+			self.root = Node(val)
 		else:
-			'''
-			root has something is True try next level
-			'''
-			self._insert( x, self.root)
+			#'''root has something is True try next level'''
+			self._insert(val, self.root)
 		return True
 
-	def _insert(self, x, root):
+	def _insert(self, val, root):
 		'''
 		On next level 
 		Check where should go, 
@@ -31,21 +30,21 @@ class BST:
 		   		if any, 
 		   		else go to next level else 
 		'''
-		if x < root.data:
-			''' Left branch '''
+		if val < root.data:
+			#''' Left branch '''
 			if not root.left:
-				root.left = Node(x)
+				root.left = Node(val)
 			else:
-				self._insert( x, root.left )
+				self._insert(val, root.left)
 		else:
-			''' Right branch '''
+			#''' Right branch '''
 			if not root.right:
-				root.right = Node(x)
+				root.right = Node(val)
 			else:
-				self._insert( x, root.right)
+				self._insert(val, root.right)
 
 	def inorder(self):
-		'''If BST root has something is True'''
+		#'''If BST root has something is True'''
 		if self.root:
 			self._order_result = []
 			#self._order_result *= 0 #fastest clear but didn't work
@@ -57,71 +56,71 @@ class BST:
 
 	def _inorder(self, root):
 		'''
-		Take root, and recursively check 
+		Take root, and recursively check
 		Start from Left Root then Right
 		'''
-		''' If root.left has something is True'''
+		#''' If root.left has something is True'''
 		if root.left:
-			self._inorder( root.left )
-		#print("{}".format( root.data ), end=", ")
-		self._order_result.append( root.data )
+			self._inorder(root.left)
+		#print("{}".format(root.data), end=", ")
+		self._order_result.append(root.data)
 		if root.right:
-			self._inorder( root.right )
+			self._inorder(root.right)
 
 	def preorder(self):
-		''' if BST root has something is True'''
+		#''' if BST root has something is True'''
 		if self.root:
 			self._order_result = []
 			#self._order_result *= 0 #fastest clear but didn't work?
-			self._preorder( self.root )
+			self._preorder(self.root)
 		else:
 			return "Nothing to print from  preorder\n"
 		return self._order_result
 
 	def _preorder(self, root):
-		''' if root left has something is True'''
+		#''' if root left has something is True'''
 		#print("{}".format(root.data), end=", ")
-		self._order_result.append( root.data )
+		self._order_result.append(root.data)
 		if root.left:
-			self._preorder( root.left)
+			self._preorder(root.left)
 		if root.right:
-			self._preorder( root.right)
+			self._preorder(root.right)
 
 	def postorder(self):
-		''' if BST root has something is True'''
+		#''' if BST root has something is True'''
 		if self.root:
 			self._order_result = []
 			#self._order_result *= 0 #fastest clear nut didn't work
-			self._postorder( self.root )
+			self._postorder(self.root)
 		else:
 			return "Nothing to print from postorder\n"
 		return self._order_result
 
-	def _postorder(self, root ):
-		'''if root.left has something is True'''
+	def _postorder(self, root):
+		#'''if root.left has something is True'''
 		if root.left:
-			self._postorder( root.left)
+			self._postorder(root.left)
 		if root.right:
-			self._postorder( root.right)
-		self._order_result.append( root.data )
-		#print("{}".format( root.data ), end=", ")
+			self._postorder(root.right)
+		self._order_result.append(root.data)
+		#print("{}".format(root.data), end=", ")
 
 
 def main():
 
 	bst = BST()
-	a=bst.inorder()
-	b=bst.preorder()
-	c=bst.postorder()
+	in_ = bst.inorder()
+	pre_ = bst.preorder()
+	post_ = bst.postorder()
 
-	for i in 25,15,50,10,22,35,70,4,12,18,24,31,44,66,90,91,92:
+	for i in 25, 15, 50, 10, 22, 35, 70, 4, 12, 18, 24, 31, 44, 66, 90, 91, 92:
 		bst.insert(i)
-	a=bst.inorder()
-	b=bst.preorder()
-	c=bst.postorder()
-	print( a )
-	print( b )
-	print( c )
+	in_ = bst.inorder()
+	pre_ = bst.preorder()
+	post_ = bst.postorder()
+	print(in_)
+	print(pre_)
+	print(post_)
 	
 if __name__ == '__main__':
 	main()
