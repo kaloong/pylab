@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 level=0
 class Node:
 
