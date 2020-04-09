@@ -8,6 +8,9 @@ class TestBST(unittest.TestCase):
         self._bst = BST()
         for i in 25,15,50,10,22,35,70,4,12,18,24,31,44,66,90,91,92:
             self._bst.insert(i)
+    def testInsert(self):
+        for i in 25,15,50,10,22,35,70,4,12,18,24,31,44,66,90,91,92:
+            self.assertTrue( self._bst.insert(i) )
 
     def testInorder(self): 
     	self.assertEquals([4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90, 91, 92], self._bst.inorder() )

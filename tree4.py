@@ -20,6 +20,7 @@ class BST:
 			root has something is True try next level
 			'''
 			self._insert( x, self.root)
+		return True
 
 	def _insert(self, x, root):
 		'''
